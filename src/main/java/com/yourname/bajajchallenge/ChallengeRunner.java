@@ -40,13 +40,13 @@ public class ChallengeRunner implements CommandLineRunner {
         submitHeaders.setContentType(MediaType.APPLICATION_JSON);
         submitHeaders.setBearerAuth(accessToken);
 
-        String sql = "SELECT e1.EMP_ID, e1.FIRST_NAME, e1.LAST_NAME, d.DEPARTMENT_NAME, " +
-                "COUNT(e2.EMP_ID) AS YOUNGER_EMPLOYEES_COUNT " +
+        String sql = "SELECT e1.EMPID, e1.FIRSTNAME, e1.LASTNAME, d.DEPARTMENTNAME, " +
+                "COUNT(e2.EMPID) AS YOUNGEREMPLOYEESCOUNT " +
                 "FROM EMPLOYEE e1 " +
-                "JOIN DEPARTMENT d ON e1.DEPARTMENT = d.DEPARTMENT_ID " +
+                "JOIN DEPARTMENT d ON e1.DEPARTMENT = d.DEPARTMENTID " +
                 "LEFT JOIN EMPLOYEE e2 ON e2.DEPARTMENT = e1.DEPARTMENT AND e2.DOB > e1.DOB " +
-                "GROUP BY e1.EMP_ID, e1.FIRST_NAME, e1.LAST_NAME, d.DEPARTMENT_NAME " +
-                "ORDER BY e1.EMP_ID DESC;";
+                "GROUP BY e1.EMPID, e1.FIRSTNAME, e1.LASTNAME, d.DEPARTMENTNAME " +
+                "ORDER BY e1.EMPID DESC;";
 
         JSONObject answerJson = new JSONObject();
         answerJson.put("finalQuery", sql);
