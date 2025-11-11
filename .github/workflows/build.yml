@@ -26,11 +26,11 @@ jobs:
       run: mvn clean package -DskipTests
       
     - name: Upload JAR as artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: bajaj-challenge-PES1UG22EC176
         path: target/bajaj-challenge-PES1UG22EC176.jar
-        
+      4
     - name: Create Release
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       uses: softprops/action-gh-release@v1
