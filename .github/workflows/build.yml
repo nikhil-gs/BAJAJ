@@ -30,7 +30,6 @@ jobs:
       with:
         name: bajaj-challenge-PES1UG22EC176
         path: target/bajaj-challenge-PES1UG22EC176.jar
-      4
     - name: Create Release
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       uses: softprops/action-gh-release@v1
